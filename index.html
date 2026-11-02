@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>مهمة إنقاذ كوكب الحاسوب</title>
+  <meta name="description" content="لعبة تعليمية تفاعلية لتعلم أجهزة الحاسب ومكوناتها - الصف الرابع الابتدائي">
+
+  <!-- خط Tajawal من Google Fonts (اختياري - يعمل بدونه) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Favicon بسيط -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+
+  <!-- خلفية النجوم -->
+  <div id="stars-container"></div>
+
+  <!-- شريط HUD (النقاط والتقدم) -->
+  <div id="game-hud" class="game-hud" style="display: none;">
+    <div class="hud-score">
+      <span class="score-icon">⭐</span>
+      <span id="hud-score-value">0</span>
+      <span style="color: var(--text-muted); font-weight: 400;">نقطة</span>
+    </div>
+    <div class="hud-progress">
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
+      <span class="hud-progress-text" id="progress-text">المرحلة 1 من 5</span>
+    </div>
+    <div class="hud-controls">
+      <button class="btn-icon" id="mute-btn" title="كتم الصوت">🔊</button>
+    </div>
+  </div>
+
+  <!-- حاوية اللعبة -->
+  <div id="game-container">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- شاشة البداية -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="start-screen" class="screen active">
+      <div class="screen-content">
+        <div class="game-title">
+          <h1>🚀 مهمة إنقاذ كوكب الحاسوب</h1>
+          <div class="subtitle">رحلة تفاعلية لاكتشاف أجهزة الحاسب ومكوناتها</div>
+        </div>
+
+        <div class="planet broken"></div>
+
+        <div class="miko-container">
+          <div class="miko">
+            <div class="miko-antenna"></div>
+            <div class="miko-head">
+              <div class="miko-eyes">
+                <div class="miko-eye"></div>
+                <div class="miko-eye"></div>
+              </div>
+              <div class="miko-mouth"></div>
+            </div>
+            <div class="miko-body"></div>
+            <div class="miko-arm miko-arm-left"></div>
+            <div class="miko-arm miko-arm-right"></div>
+            <div class="miko-legs">
+              <div class="miko-leg"></div>
+              <div class="miko-leg"></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-start" id="btn-start">
+          🎮 ابدأ المغامرة
+        </button>
+
+        <div style="color: var(--text-muted); font-size: 0.85rem; text-align: center;">
+          الصف الرابع الابتدائي | تكنولوجيا المعلومات والاتصالات
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- شاشة القصة -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="story-screen" class="screen">
+      <div class="screen-content" id="story-content">
+        <!-- يتم ملؤه ديناميكيًا -->
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- شاشة خريطة الرحلة -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="map-screen" class="screen screen-padded">
+      <div class="screen-content" id="map-content">
+        <!-- يتم ملؤه ديناميكيًا -->
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- شاشة مقدمة المرحلة -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="level-intro-screen" class="screen screen-padded">
+      <div class="screen-content" id="level-intro-content">
+        <!-- يتم ملؤه ديناميكيًا -->
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- شاشة الأسئلة -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="question-screen" class="screen screen-padded">
+      <div class="screen-content" id="question-content">
+        <!-- يتم ملؤه ديناميكيًا -->
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- شاشة الشارة -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="badge-screen" class="screen screen-padded">
+      <div class="screen-content" id="badge-content">
+        <!-- يتم ملؤه ديناميكيًا -->
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- شاشة الفوز -->
+    <!-- ═══════════════════════════════════════ -->
+    <div id="victory-screen" class="screen">
+      <div class="screen-content" id="victory-content">
+        <!-- يتم ملؤه ديناميكيًا -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- التغذية الراجعة (Overlay) -->
+  <div id="feedback-overlay" class="feedback-overlay">
+    <div class="feedback-card">
+      <!-- يتم ملؤه ديناميكيًا -->
+    </div>
+  </div>
+
+  <!-- ملفات JavaScript -->
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+
+</body>
+</html>
+
